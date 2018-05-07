@@ -10,6 +10,7 @@ import * as S from './styles';
 
 const enhance = compose(
   mapProps(propsMapper),
+  withAudioEngineProps,
 );
 
 const propTypes = {

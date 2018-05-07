@@ -14,6 +14,10 @@ export default [
     story: () => <TransportButton type="pause" onClick={onClickLogger}/>,
   },
   {
+    name: 'record',
+    story: () => <TransportButton type="record" onClick={onClickLogger}/>,
+  },
+  {
     name: 'stop',
     story: () => <TransportButton type="stop" onClick={onClickLogger}/>,
   },
