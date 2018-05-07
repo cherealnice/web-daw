@@ -7,14 +7,14 @@ export const MainButton = styled('button')`
   height: ${({ size }) => `${size * 3}px`};
   width: ${({ size }) => `${size * 3}px`};
   font-weight: ${({ type }) => (type === 'pause' ? 'bolder' : 'normal')};
-  color: ${({ color }) => color};
+  color: ${({ color }) => `dark${color}`};
   background: grey;
   cursor: pointer;
 
   :active {
+    color: ${({ color }) => color};
     border-style: inset;
     border-color: dimgray;
     background: dimgray;
-    color: ${({ color }) => `dark${color}`};
   }
 `;

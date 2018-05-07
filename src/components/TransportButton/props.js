@@ -1,10 +1,12 @@
 const typeToColor = {
+  record: 'red',
   play: 'green',
-  stop: 'red',
+  stop: 'blue',
   pause: 'orange',
 };
 
 const typeToAscii = {
+  record: '●',
   play: '►',
   pause: '| |',
   stop: '■',

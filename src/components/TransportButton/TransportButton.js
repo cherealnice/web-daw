@@ -14,11 +14,13 @@ const propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.number,
   type: PropTypes.oneOf([
+    'record',
     'play',
     'pause',
     'stop',
   ]),
   color: PropTypes.oneOf([
+    'blue',
     'green',
     'red',
     'orange',
