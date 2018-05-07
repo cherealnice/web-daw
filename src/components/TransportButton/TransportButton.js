@@ -1,56 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { mapProps } from 'recompose';
-import styled from 'react-emotion';
+import { compose, mapProps } from 'recompose';
 
-const MainButton = styled.button`
-  size: ${({ size }) => `${size}px`};
-  border: blue;
-`;
+import { MainButton } from './styles';
+import propsMapper from './props';
 
-const typeToAscii = {
-  play: '►',
-  pause: '▌▌',
-  stop: '■',
-};
-
-const sizeAdjustor = {
-  play: 0,
-  pause: -4,
-  stop: 8,
-};
-
-const propsMapper = props => ({
-  onClick: props.onClick,
-  size: props.size + sizeAdjustor[props.type],
-  content: typeToAscii[props.type],
-});
-
-const enhance = mapProps(propsMapper)
+const enhance = compose(
+  mapProps(propsMapper),
+);
 
 const propTypes = {
-  content: PropTypes.oneOf([
-    '►',
-    '▌▌',
-    '■',
-  ]),
   onClick: PropTypes.func,
   size: PropTypes.number,
+  type: PropTypes.oneOf([
+    'play',
+    'pause',
+    'stop',
+  ]),
+  color: PropTypes.oneOf([
+    'green',
+    'red',
+    'orange',
+  ]),
 };
 
 const defaultProps = {
-  type: 'play',
   onClick: null,
   size: 16,
+  type: 'play',
+  color: 'green',
 };
 
 const TransportButton = ({
-  content,
+  children,
   onClick,
   size,
+  type,
+  color,
 }) => (
-  <MainButton size={size} onClick={onClick}>
-    {content}
+  <MainButton
+    type={type}
+    size={size}
+    onClick={onClick}
+    color={color}
+  >
+    {children(type)}
   </MainButton>
 );
 
