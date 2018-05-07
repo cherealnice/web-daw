@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { compose, mapProps } from 'recompose';
+import { mapProps } from 'recompose';
+import { compose, identity as id } from 'ramda';
 
-import { MainButton } from './styles';
+import * as S from './styles';
 import propsMapper from './props';
 
 const enhance = compose(
@@ -22,6 +23,7 @@ const propTypes = {
     'red',
     'orange',
   ]),
+  children: PropTypes.func,
 };
 
 const defaultProps = {
@@ -29,6 +31,7 @@ const defaultProps = {
   size: 16,
   type: 'play',
   color: 'green',
+  children: id,
 };
 
 const TransportButton = ({
@@ -38,14 +41,14 @@ const TransportButton = ({
   type,
   color,
 }) => (
-  <MainButton
+  <S.MainButton
     type={type}
     size={size}
     onClick={onClick}
     color={color}
   >
     {children(type)}
-  </MainButton>
+  </S.MainButton>
 );
 
 TransportButton.propTypes = propTypes;
